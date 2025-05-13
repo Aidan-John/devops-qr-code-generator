@@ -10,8 +10,8 @@ jobs:
 
       - name: Build Docker images
         run: |
-          docker build ./api/ -t ajohn1/qr-front:latest
-          docker build ./qr-front/ -t ajohn1/qr-back:latest
+          docker build ./api/ -t ajohn1/qr-back:latest
+          docker build ./qr-front/ -t ajohn1/qr-front:latest
 
       - name: Push Docker images
         run: |
