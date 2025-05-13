@@ -1,0 +1,20 @@
+name: Docker Images CI
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker images
+        run: |
+          docker build ./api/ -t ajohn1/qr-front:latest
+          docker build ./qr-front/ -t ajohn1/qr-back:latest
+
+      - name: Push Docker images
+        run: |
+          docker login -u ajohn1 -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push ajohn1/qr-front:latest
+          docker push ajohn1/qr-back:latest
