@@ -28,10 +28,7 @@ app.add_middleware(
 
 storage_client = storage.Client()
 
-bucket_name = os.getenv("BUCKET_NAME")
-if not bucket_name:
-    raise ValueError("BUCKET_NAME environment variable is not set.")
-
+bucket_name = "qr-bucket-1"
 
 @app.post("/generate-qr-code/")
 async def generate_qr_code(url: str):
