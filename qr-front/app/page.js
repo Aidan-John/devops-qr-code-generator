@@ -9,9 +9,7 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `http://localhost:8000/generate-qr-code/?url=${url}`
-      );
+      const response = await axios.post(`/api/generate-qr-code/?url=${url}`);
       setQrCodeUrl(response.data.qr_url);
     } catch (error) {
       console.error("Error generating QR code:", error);
